@@ -16,15 +16,15 @@ A web application that allows users to fetch and display Codeforces user statist
 
 ## Technologies Used
 
-- HTML5
-- CSS3
-- JavaScript (Vanilla)
+- HTML
+- CSS
+- JavaScript
 - Codeforces API
 - Font Awesome Icons
 
 ## Setup and Usage
 
-1. Click on this link 
+1. Click on this link https://codeforces-data-fetcher.vercel.app/
 2. Enter a Codeforces username in the search box
 3. Click "Summon Data" to fetch and display the user's information
 
