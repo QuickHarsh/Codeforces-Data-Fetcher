@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codeforces User Data - Eldritch Code</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="eldritch-title">Codeforces User Data</h1>
+            <p class="eldritch-subtitle">Unveil the mysteries of competitive programming</p>
+        </header>
+
+        <div class="search-container">
+            <input type="text" id="username" placeholder="Enter Codeforces username..." class="eldritch-input">
+            <button id="search-btn" class="eldritch-button">Summon Data</button>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="eldritch-spinner"></div>
+            <p>Consulting the ancient algorithms...</p>
+        </div>
+
+        <div id="user-data" class="user-data hidden">
+            <div class="user-info">
+                <img id="user-avatar" src="" alt="User Avatar" class="user-avatar">
+                <h2 id="user-name" class="eldritch-text"></h2>
+                <p id="user-rank" class="eldritch-text"></p>
+                <p id="user-rating" class="eldritch-text"></p>
+                <div class="social-links">
+                    <a id="profile-link" href="#" target="_blank" class="eldritch-link">
+                        <i class="fas fa-external-link-alt"></i> Profile
+                    </a>
+                </div>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-box">
+                    <h3><i class="fas fa-trophy"></i> Contests</h3>
+                    <p id="contests-count" class="eldritch-text"></p>
+                    <p id="best-rank" class="eldritch-text"></p>
+                </div>
+                <div class="stat-box">
+                    <h3><i class="fas fa-check-circle"></i> Problems Solved</h3>
+                    <p id="problems-solved" class="eldritch-text"></p>
+                    <p id="success-rate" class="eldritch-text"></p>
+                </div>
+                <div class="stat-box">
+                    <h3><i class="fas fa-chart-line"></i> Rating</h3>
+                    <p id="current-rating" class="eldritch-text"></p>
+                    <p id="max-rating" class="eldritch-text"></p>
+                </div>
+            </div>
+
+            <div class="detailed-stats">
+                <div class="stat-section">
+                    <h3><i class="fas fa-code"></i> Problem Statistics</h3>
+                    <div class="problem-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Easy (A)</span>
+                            <span id="easy-count" class="stat-value"></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Medium (B)</span>
+                            <span id="medium-count" class="stat-value"></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Hard (C)</span>
+                            <span id="hard-count" class="stat-value"></span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Very Hard (D+)</span>
+                            <span id="very-hard-count" class="stat-value"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-section">
+                    <h3><i class="fas fa-tags"></i> Problem Tags Distribution</h3>
+                    <div id="tags-distribution" class="tags-distribution">
+                    </div>
+                </div>
+
+                <div class="stat-section">
+                    <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                    <div id="recent-submissions" class="recent-submissions">
+                    </div>
+                    <div class="activity-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Today's Submissions</span>
+                            <span id="today-submissions" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">This Week</span>
+                            <span id="week-submissions" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">This Month</span>
+                            <span id="month-submissions" class="stat-value">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-section">
+                    <h3><i class="fas fa-chart-pie"></i> Problem Solving Statistics</h3>
+                    <div class="problem-solving-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Average Time per Problem</span>
+                            <span id="avg-time" class="stat-value">0 min</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Most Active Time</span>
+                            <span id="active-time" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Streak</span>
+                            <span id="streak" class="stat-value">0 days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-section">
+                    <h3><i class="fas fa-tasks"></i> Problem Difficulty Analysis</h3>
+                    <div class="difficulty-analysis">
+                        <div class="difficulty-bar">
+                            <div class="difficulty-label">Easy (A)</div>
+                            <div class="progress-bar">
+                                <div id="easy-progress" class="progress-fill"></div>
+                            </div>
+                            <div id="easy-percentage" class="difficulty-percentage">0%</div>
+                        </div>
+                        <div class="difficulty-bar">
+                            <div class="difficulty-label">Medium (B)</div>
+                            <div class="progress-bar">
+                                <div id="medium-progress" class="progress-fill"></div>
+                            </div>
+                            <div id="medium-percentage" class="difficulty-percentage">0%</div>
+                        </div>
+                        <div class="difficulty-bar">
+                            <div class="difficulty-label">Hard (C)</div>
+                            <div class="progress-bar">
+                                <div id="hard-progress" class="progress-fill"></div>
+                            </div>
+                            <div id="hard-percentage" class="difficulty-percentage">0%</div>
+                        </div>
+                        <div class="difficulty-bar">
+                            <div class="difficulty-label">Very Hard (D+)</div>
+                            <div class="progress-bar">
+                                <div id="very-hard-progress" class="progress-fill"></div>
+                            </div>
+                            <div id="very-hard-percentage" class="difficulty-percentage">0%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-section">
+                    <h3><i class="fas fa-language"></i> Language Usage</h3>
+                    <div id="language-stats" class="language-stats">
+                    </div>
+                </div>
+
+                <div class="stat-section">
+                    <h3><i class="fas fa-trophy"></i> Contest Performance</h3>
+                    <div id="contest-performance" class="contest-performance">
+                        <div class="performance-timeline">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="error" class="error hidden">
+            <p class="eldritch-text">The ancient algorithms have failed to comprehend your request...</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
